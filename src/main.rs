@@ -322,15 +322,19 @@ fn run(
         };
 
         
-        if let Some(gpio_config) = config.gpio {
-            let tx2 = tx.clone();
-            let shell_base_config = base_config.clone();
+        // if let Some(gpio_config) = config.gpio {
+        //     let tx2 = tx.clone();
+        //     let shell_base_config = base_config.clone();
 
-            tokio::spawn(async move {
-                let rx2 = tx2.subscribe();
-                oshome_gpio::start(tx2, rx2, &shell_base_config, &gpio_config).await;
-            });
-        };
+        //     tokio::spawn(async move {
+        //         let rx2 = tx2.subscribe();
+        //         oshome_gpio::start(tx2, rx2, &shell_base_config, &gpio_config).await;
+        //     });
+        // };
+
+        tokio::spawn(async move {
+            oshome_api::start().await.unwrap();
+        });
 
         let ctrl_c = async {
             signal::ctrl_c()

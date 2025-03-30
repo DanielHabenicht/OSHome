@@ -1,14 +1,17 @@
 [package]
-name = "oshome-mqtt"
-version = "0.3.2"
+name = "oshome-api"
+version = "0.3.1"
 authors = ["Daniel Habenicht <daniel-habenicht@outlook.de>"]
 edition = "2021"
 
 [dependencies]
 log = "0.4"
-rumqttc = "0.24.0"
 serde = { version = "1.0", features = ["derive"] }
 tokio = { version = "1", features = ["full"] }
-whoami = "1.6.0"
 oshome-core = { path = "../core" }
-serde_json = "1.0"
+prost = "0.13.5"
+tonic = "0.13"
+tower = "0.5.2"
+
+[build-dependencies]
+tonic-build = "0.13"
