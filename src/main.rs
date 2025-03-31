@@ -332,15 +332,12 @@ fn run(
         //     });
         // };
 
+        if let Some(mdns_config) = config.mdns {
+
         tokio::spawn(async move {
-            let responder = libmdns::Responder::new().unwrap();
-            let _svc = responder.register(
-                "_esphomelib._tcp.local.".to_owned(),
-                "Test Device".to_owned(),
-                6053,
-                &["friendly_name=Hello", "version=1.0", "mac=00:00:00:00:00:00"],
-            );
+            oshome_mdns::start(&mdns_config);
         });
+    }
 
 
         let ctrl_c = async {

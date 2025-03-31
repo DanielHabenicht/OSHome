@@ -19,11 +19,11 @@ oshome-shell = { path = "components/shell" }
 oshome-core = { path = "components/core" }
 oshome-web_server = { path = "components/web_server" }
 oshome-gpio = { path = "components/gpio" }
+oshome-mdns = { path = "components/mdns" }
 inquire = "0.7.5"
 shell_exec = "0.2.0"
 flexi_logger = "0.29.8"
 directories = "6.0.0"
-libmdns = "0.9"
 
 [target.'cfg(windows)'.dependencies]
 windows-service = "0.5"
@@ -31,4 +31,4 @@ windows-sys = "0.59"
 
 [workspace]
 resolver = "2"
-members = ["components/mqtt", "components/shell", "components/core", "components/web_server", "components/gpio"]
+members = ["components/mqtt", "components/shell", "components/core", "components/web_server", "components/gpio", "components/mdns"]

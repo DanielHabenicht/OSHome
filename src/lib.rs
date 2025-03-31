@@ -1,5 +1,6 @@
 use oshome_core::{binary_sensor::BinarySensor, button::ButtonConfig};
 use oshome_gpio::GpioConfig;
+use oshome_mdns::MdnsConfig;
 use oshome_web_server::WebServerConfig;
 use serde::Deserialize;
 use oshome_mqtt::MqttConfig;
@@ -31,6 +32,7 @@ pub struct Config {
     pub logger: Option<Logger>,
 
     pub mqtt: Option<MqttConfig>,
+    pub mdns: Option<MdnsConfig>,
     pub shell: Option<ShellConfig>,
     pub button: Option<Vec<ButtonConfig>>,
     pub binary_sensor: Option<Vec<BinarySensor>>,
