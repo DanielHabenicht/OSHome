@@ -322,15 +322,26 @@ fn run(
         };
 
         
-        if let Some(gpio_config) = config.gpio {
-            let tx2 = tx.clone();
-            let shell_base_config = base_config.clone();
+        // if let Some(gpio_config) = config.gpio {
+        //     let tx2 = tx.clone();
+        //     let shell_base_config = base_config.clone();
 
-            tokio::spawn(async move {
-                let rx2 = tx2.subscribe();
-                oshome_gpio::start(tx2, rx2, &shell_base_config, &gpio_config).await;
-            });
-        };
+        //     tokio::spawn(async move {
+        //         let rx2 = tx2.subscribe();
+        //         oshome_gpio::start(tx2, rx2, &shell_base_config, &gpio_config).await;
+        //     });
+        // };
+
+        tokio::spawn(async move {
+            let responder = libmdns::Responder::new().unwrap();
+            let _svc = responder.register(
+                "_esphomelib._tcp.local.".to_owned(),
+                "Test Device".to_owned(),
+                6053,
+                &["friendly_name=Hello", "version=1.0", "mac=00:00:00:00:00:00"],
+            );
+        });
+
 
         let ctrl_c = async {
             signal::ctrl_c()
