@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.3.10](https://github.com/DanielHabenicht/OSHome/compare/v0.3.9...v0.3.10) (2025-04-17)
+
 ## [0.3.9](https://github.com/DanielHabenicht/OSHome/compare/v0.3.8...v0.3.9) (2025-04-17)
 
 
